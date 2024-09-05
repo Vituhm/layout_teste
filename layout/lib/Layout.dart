@@ -6,6 +6,23 @@ class Layout extends StatefulWidget {
 }
 
 class LayoutState extends State<Layout> {
+  
+  Row criarRow(String texto){
+    return new Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        new Container(
+          margin: EdgeInsets.only(top: 15),
+          child: new Text(texto,
+            style: TextStyle(color: Colors.white, fontSize: 18,),),
+          //height: 50,
+          width: 350,
+          color: Colors.blueAccent,
+          padding: EdgeInsets.all(15)),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -93,29 +110,38 @@ class LayoutState extends State<Layout> {
           )
         ),
         
-        // corpo
-        body: Center(
-          child: ElevatedButton(
-            child: Text("Mostrar SnackBar"),
-            onPressed: (){
-              final snackBar = SnackBar(
-                content: Text("Buenas"),
-                duration: new Duration(milliseconds: 2500),
-                behavior: SnackBarBehavior.floating,
-                action: SnackBarAction(
-                  label: "OK",
-                  onPressed: (){
-                    // ação ou método
-                  },
-                ),
-              );
+        // // corpo
+        // body: Center(
+        //   child: ElevatedButton(
+        //     child: Text("Mostrar SnackBar"),
+        //     onPressed: (){
+        //       final snackBar = SnackBar(
+        //         content: Text("Buenas"),
+        //         duration: new Duration(milliseconds: 2500),
+        //         behavior: SnackBarBehavior.floating,
+        //         action: SnackBarAction(
+        //           label: "OK",
+        //           onPressed: (){
+        //             // ação ou método
+        //           },
+        //         ),
+        //       );
 
-              // Exibindo o SnackBar usando o ScaffoldMessenger
-              ScaffoldMessenger.of(context).showSnackBar(snackBar);
-            },
-          ),
+        //       // Exibindo o SnackBar usando o ScaffoldMessenger
+        //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
+        //     },
+        //   ),
+        // ),
+
+        // Corpo (body)
+        body: new Column(
+          children: [
+            criarRow("Linha 1"),
+            criarRow("Linha 2"),
+            criarRow("Linha 3")
+          ],
         ),
-        
+
         // barra de ícones (bottomNavigationBar)
         bottomNavigationBar: BottomNavigationBar(
           items: [
