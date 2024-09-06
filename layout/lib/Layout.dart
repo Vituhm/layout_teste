@@ -13,12 +13,17 @@ class LayoutState extends State<Layout> {
       children: [
         new Container(
           margin: EdgeInsets.only(top: 15),
-          child: new Text(texto,
-            style: TextStyle(color: Colors.white, fontSize: 18,),),
-          //height: 50,
+          child: new Text(
+            texto,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 18,
+            ),
+          ),
           width: 350,
           color: Colors.blueAccent,
-          padding: EdgeInsets.all(15)),
+          padding: EdgeInsets.all(15)
+        ),
       ],
     );
   }
@@ -110,6 +115,60 @@ class LayoutState extends State<Layout> {
           )
         ),
         
+        // Corpo (body) 
+        body: new Column(
+          children: [
+            // Linhas criadas a partir do método criarRow
+            criarRow("Linha de teste"),
+            criarRow("Segunda Linha"),
+            criarRow("Terceira Linha"),
+
+            // Linha criada manualmente
+            new Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                new Container(
+                  margin: EdgeInsets.only(top: 15),
+                  child: new Text(
+                    "Linha criada manualmente",
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 18,
+                    ),
+                  ),
+                  width: 350,
+                  color: Colors.pinkAccent,
+                  padding: EdgeInsets.all(15)
+                ),
+              ],
+            ),
+
+            new Padding(padding: EdgeInsets.all(8)),
+            
+            new Center(
+              child: ElevatedButton(
+                child: Text("Mostrar SnackBar"),
+                onPressed: (){
+                  final snackBar = SnackBar(
+                    content: Text("Buenas!"),
+                    duration: new Duration(milliseconds: 2500),
+                    behavior: SnackBarBehavior.floating,
+                    action: SnackBarAction(
+                      label: "OK",
+                      onPressed: (){
+                        // ação ou método
+                      },
+                    ),
+                  );
+                  // Exibindo o SnackBar usando o ScaffoldMessenger
+                  ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                },
+              ),
+            ),
+
+          ],
+        ),
+
         // // corpo
         // body: Center(
         //   child: ElevatedButton(
@@ -126,21 +185,11 @@ class LayoutState extends State<Layout> {
         //           },
         //         ),
         //       );
-
         //       // Exibindo o SnackBar usando o ScaffoldMessenger
         //       ScaffoldMessenger.of(context).showSnackBar(snackBar);
         //     },
         //   ),
         // ),
-
-        // Corpo (body)
-        body: new Column(
-          children: [
-            criarRow("Linha 1"),
-            criarRow("Linha 2"),
-            criarRow("Linha 3")
-          ],
-        ),
 
         // barra de ícones (bottomNavigationBar)
         bottomNavigationBar: BottomNavigationBar(
