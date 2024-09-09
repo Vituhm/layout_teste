@@ -11,6 +11,8 @@ class LayoutApp extends StatelessWidget{
       home: Scaffold(
         body: Layout()
       )
+      //DEBUG
+      debugShowCheckedModeBanner: false,
     );
   }
 }
